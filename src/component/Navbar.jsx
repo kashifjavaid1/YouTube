@@ -8,12 +8,12 @@ import { CgProfile } from "react-icons/cg";
 
 function Navbar() {
   return (
-    <div className="flex justify-between  px-6 py-2">
+    <div className="flex justify-between fixed w-full top-0 bg-white px-6 py-2">
       <div className="flex items-center space-x-4 cursor-pointer">
         <AiOutlineMenu className="text-xl" />
         <img src={logo} alt="Logo" className="w-28" />
       </div>
-      <div className="flex w-[35%] items-center  ">
+      <div className="flex w-[35%] items-center">
         <div className="w-full border px-3 py-2 rounded-l-full ">
           <input type="text" placeholder="Search" className="outline-none" />
         </div>
@@ -25,7 +25,7 @@ function Navbar() {
           className="ml-3 border rounded-full p-2 cursor-pointer hover:bg-gray-200 duration-300"
         />
       </div>
-      <div className="flex space-x-6 items-center px-6 ">
+      <div className="flex space-x-6 items-center  ">
         <RiVideoAddLine
           size={"42px"}
           className="hover:bg-gray-100 p-2 rounded-full duration-300"
