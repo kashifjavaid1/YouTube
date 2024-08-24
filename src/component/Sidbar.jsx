@@ -169,7 +169,7 @@ function Sidebar() {
       </div>
       <br />
       <hr />
-      <div className="space-y-3 mt-3">
+      <div className="space-y-3 mt-4">
         <div className="flex items-center font-semibold space-x-2 ">
           <h1 className="cursor-pointer">You</h1>
           <FaChevronRight className="cursor-pointer" />
