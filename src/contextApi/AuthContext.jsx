@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { fetchData } from "../utils/rapaid";
 
 export const AuthContext = createContext();
@@ -12,7 +12,7 @@ export default function AuthProvider({ children }) {
     const fetchAllData = async (query) => {
       setLoading(true);
       try {
-        const res = await fetchData(`/search/?q=${query}`);
+        const res = await fetchData(`search/?q=${query}`);
         setData(res);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -30,3 +30,5 @@ export default function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
+
+export const useAuth = () => useContext(AuthContext);
