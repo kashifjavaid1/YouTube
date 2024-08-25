@@ -13,7 +13,7 @@ export default function AuthProvider({ children }) {
       setLoading(true);
       try {
         const res = await fetchData(`search/?q=${query}`);
-        setData(res);
+        setData(res.data.contents);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
