@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./component/Navbar";
-import Home from "./component/Home";
-import Search from "./component/Search";
-import PaylingVideo from "./component/PaylingVideo";
+import Home from "./pages/Home";
+import Search from "./pages/Search";
+import PaylingVideo from "./pages/PaylingVideo";
 
 function App() {
   return (

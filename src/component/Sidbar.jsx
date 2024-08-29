@@ -155,9 +155,9 @@ function Sidebar() {
   ];
 
   return (
-    <div className="px-6 w-[15%]  h-[calc(100vh-10vh)]  overflow-y-scroll overflow-x-hidden scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 mt-16">
+    <div className="px-6 w-[13%]  h-[calc(100vh-10vh)]  overflow-y-scroll overflow-x-hidden scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
       <div className="space-y-3 ">
-        {sidebarItems.map((item, index) => (
+        {sidebarItems?.map((item, index) => (
           <div
             key={index}
             className="space-x-6 flex items-center hover:bg-gray-300 rounded-xl duration-300"
