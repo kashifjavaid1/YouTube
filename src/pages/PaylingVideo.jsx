@@ -1,32 +1,38 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { fetchData } from "../utils/rapaid";
+import ReactPlayer from "react-player";
+
 export default function PaylingVideo() {
+  const [video, setVideo] = useState();
+  const [realtiveVideo, setRealtiveVideo] = useState();
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchDetailVideo = () => {
+      fetchData(`video/details/?id=${id}`).then((res) => {
+        setVideo(res);
+        console.log("🚀 ~ fetchData ~ res:", res);
+      });
+    };
+    fetchDetailVideo();
+  }, [id]);
   return (
-    <div className="">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem enim
-      reprehenderit porro alias error quidem totam, aliquam consequatur, placeat
-      aspernatur recusandae eveniet optio ad. Beatae neque adipisci harum libero
-      architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Deserunt velit veritatis laborum error tempore inventore reiciendis
-      quaerat, incidunt, unde fugiat hic dicta voluptatem architecto sapiente
-      quis natus quasi. Ea necessitatibus laboriosam officia, officiis pariatur
-      exercitationem explicabo sunt perferendis cupiditate ipsum asperiores
-      porro a quo consequuntur eveniet ullam adipisci nesciunt iusto temporibus
-      nam voluptates modi debitis alias molestiae. Quidem facilis incidunt ipsa
-      doloribus inventore officia id reprehenderit doloremque, ad impedit
-      consectetur recusandae voluptatibus vero perspiciatis asperiores beatae
-      cum culpa sed ea obcaecati similique officiis? Fugit quibusdam vel saepe
-      repellat ratione, quas modi distinctio aut inventore eaque ipsa, itaque
-      quisquam! Reiciendis debitis fuga, deserunt accusamus velit beatae
-      officia! Laborum dolorum quod laboriosam officia exercitationem ipsam
-      nobis voluptate error perspiciatis vero dolores, est fugit quasi mollitia
-      cumque tenetur veniam. Quaerat quod debitis, possimus commodi numquam cum
-      labore maxime nostrum harum veniam voluptates alias? Pariatur a tempora
-      voluptatibus incidunt maxime amet iure autem, possimus architecto.
-      Distinctio nulla corrupti iste neque sit deserunt eius ad cum, modi quidem
-      voluptatum perferendis, atque recusandae pariatur blanditiis incidunt
-      maxime sed expedita consectetur eum facilis. Eius voluptatum officia
-      praesentium libero cum quos debitis nemo quisquam optio earum, aperiam
-      laborum error, deleniti doloremque. Eveniet possimus ipsam ut tenetur
-      molestias voluptate!
+    <div className="flex justify-center flex-row  h-[calc(100%-56px)] mt-16">
+      <div className="w-full max-w-[1300px] flex flex-col lg:flex-row">
+        <div className="flex flex-col lg:w-[calc(100%-356px) xl:w-[calc(100%-400px)] px-4 py-3 lg:py-6">
+          <div className="h-[200px] md:h-[500px] ml-[-16px] mr-[-16px] lg:mr-0 lg:ml-0">
+            <ReactPlayer
+              url={`https://www.youtube.com/watch?v=${id}`}
+              height={"100%"}
+              width={"100%"}
+              controls
+              style={{ backgroundColor: "#000000" }}
+              playing={true}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

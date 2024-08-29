@@ -5,6 +5,7 @@ import Video from "./Video";
 
 function Home() {
   const { loading, data } = useAuth();
+  console.log("🚀 ~ Home ~ data:", data);
   return (
     <div className="flex mt-20 h-[calc(100vh-5rem)]  overflow-y-hidden">
       <Sidebar />
