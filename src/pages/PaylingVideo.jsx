@@ -9,6 +9,8 @@ import Suggest from "../component/Suggest";
 
 export default function PaylingVideo() {
   const [video, setVideo] = useState();
+  const [suggests, setSuggests] = useState([]);
+  console.log("🚀 ~ PaylingVideo ~ suggests:", suggests);
   const { id } = useParams();
 
   useEffect(() => {
@@ -17,7 +19,13 @@ export default function PaylingVideo() {
         setVideo(res);
       });
     };
+    const suggestsVideo = () => {
+      fetchData(`video/related-contents/?id=${id}`).then((res) => {
+        setSuggests(res?.data?.contents);
+      });
+    };
     fetchDetailVideo();
+    suggestsVideo();
   }, [id]);
 
   return (
@@ -89,12 +97,14 @@ export default function PaylingVideo() {
         </div>
       </div>
 
-      {/* Related Videos Section */}
-      <div className="w-full lg:w-[30%] mt-6 lg:mt-0 lg:ml-8">
-        {/* Add related videos list here */}
-        <div className="bg-white p-4 rounded-lg shadow">
-          <Suggest />
-        </div>
+      {/* Add related videos list here */}
+      <div className="bg-white p-4 rounded-lg shadow">
+        {suggests?.map((item, index) => {
+          if (item.type !== "video") {
+            return false;
+          }
+          return <Suggest key={index} video={item?.video} />;
+        })}
       </div>
     </div>
   );
