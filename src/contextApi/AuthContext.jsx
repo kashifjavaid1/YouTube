@@ -6,6 +6,7 @@ export const AuthContext = createContext();
 export default function AuthProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
+  console.log("🚀 ~ AuthProvider ~ data:", data);
   const [value, setValue] = useState("New");
 
   useEffect(() => {

@@ -10,7 +10,6 @@ import Suggest from "../component/Suggest";
 export default function PaylingVideo() {
   const [video, setVideo] = useState();
   const [suggests, setSuggests] = useState([]);
-  console.log("🚀 ~ PaylingVideo ~ suggests:", suggests);
   const { id } = useParams();
 
   useEffect(() => {
@@ -27,9 +26,10 @@ export default function PaylingVideo() {
     fetchDetailVideo();
     suggestsVideo();
   }, [id]);
+  console.log(video?.data?.author?.avatar[0]?.url);
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-start mt-16">
+    <div className="flex flex-col lg:flex-row justify-center items-start mt-20  ">
       <div className="w-full lg:w-[70%] px-4 py-3 lg:py-6">
         {/* Video Player */}
         <div className="w-full h-[200px] md:h-[500px] bg-black">
@@ -46,13 +46,14 @@ export default function PaylingVideo() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-4">
           <div className="flex items-center">
             {/* Channel Avatar */}
-            <div className="flex h-11 w-11 rounded-full">
-              <img
-                className="h-full w-full object-cover rounded-full overflow-hidden"
-                src={video?.data?.author?.avatar[0]?.url}
-                alt="Channel Avatar"
-              />
-            </div>
+            {video?.data?.author?.avatar?.url && (
+              <div className="flex h-9 w-9 rounded-full overflow-hidden">
+                <img
+                  src={video?.data?.author?.avatar[0]?.url}
+                  className="w-full h-full rounded-full overflow-hidden"
+                />
+              </div>
+            )}
 
             {/* Channel Info */}
             <div className="flex flex-col ml-3">
@@ -98,7 +99,7 @@ export default function PaylingVideo() {
       </div>
 
       {/* Add related videos list here */}
-      <div className="bg-white p-4 rounded-lg shadow">
+      <div className="bg-white p-4 rounded-lg shadow h-[calc(100vh-10rem)] overflow-y-scroll  overflow-x-hidden">
         {suggests?.map((item, index) => {
           if (item.type !== "video") {
             return false;
